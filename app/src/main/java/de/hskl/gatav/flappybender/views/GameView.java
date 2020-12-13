@@ -55,6 +55,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
+        EntityHandler.getInstance().clear();
         if(!isRunning) {
             throw new RuntimeException("Game stopped but isn't running?!?");
         }
