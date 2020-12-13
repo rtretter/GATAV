@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-<de.hskl.gatav.gatav.GameView
+    tools:context=".views.MainActivity">
+<de.hskl.gatav.flappybender.views.GameView
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 </LinearLayout>

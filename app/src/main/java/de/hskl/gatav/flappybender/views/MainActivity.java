@@ -1,8 +1,10 @@
-package de.hskl.gatav.gatav;
+package de.hskl.gatav.flappybender.views;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import de.hskl.gatav.flappybender.R;
 
 public class MainActivity extends AppCompatActivity {
 
