@@ -69,7 +69,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     private void gameLoop() {
-        EntityHandler.getInstance().addEntity(new Player(100, 100, 50, 50));
+        EntityHandler.getInstance().addEntity(new Player(100, 100, 200, 200));
         long time1 = System.nanoTime();
         double nsPerTick = 1000000000 / TPS;
         double delta = 0.0;
