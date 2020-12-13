@@ -1,7 +1,8 @@
 package de.hskl.gatav.flappybender.entities;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
+
+import de.hskl.gatav.flappybender.graphics.Asset;
 
 public abstract class Entity {
 
@@ -12,14 +13,18 @@ public abstract class Entity {
     // Size
     protected int width, height;
     // Graphics
-    protected Bitmap bitmap;
+    protected Asset asset;
 
-    public Entity(int x, int y, int width, int height, Bitmap bitmap) {
+    public Entity(int x, int y, int width, int height, Asset asset) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.bitmap = bitmap;
+        this.asset = asset;
+    }
+
+    public Entity(int x, int y, int width, Asset asset) {
+        this(x, y, width, 0, asset);
     }
 
     public void tick(Canvas canvas) {
@@ -27,6 +32,12 @@ public abstract class Entity {
         y += velY;
     }
 
-    public abstract void render(Canvas canvas);
+    public void render(Canvas canvas) {
+        if(height == 0) {
+            asset.render(canvas, x, y, width);
+        } else {
+            asset.render(canvas, x, y, width, height);
+        }
+    }
 
 }

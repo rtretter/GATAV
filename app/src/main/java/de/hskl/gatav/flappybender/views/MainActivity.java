@@ -6,18 +6,19 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import de.hskl.gatav.flappybender.R;
-import de.hskl.gatav.flappybender.graphics.Asset;
+import de.hskl.gatav.flappybender.graphics.AssetHandler;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        // Init Assets
+        AssetHandler.createInstance(this);
         // Make fullscreen
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        // Init Assets
-        Asset.init(this);
+        // Set Activity
+        setContentView(R.layout.activity_main);
     }
 }

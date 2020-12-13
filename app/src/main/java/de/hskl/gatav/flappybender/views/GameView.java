@@ -11,6 +11,7 @@ import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
 
+import de.hskl.gatav.flappybender.entities.Entity;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
 import de.hskl.gatav.flappybender.entities.Player;
 
@@ -35,6 +36,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         backgroundPaint.setColor(Color.BLACK);
 
         getHolder().addCallback(this);
+
+        EntityHandler.getInstance().addEntity(new Player(100, 100, 350));
     }
 
     @Override
@@ -55,7 +58,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
-        EntityHandler.getInstance().clear();
         if(!isRunning) {
             throw new RuntimeException("Game stopped but isn't running?!?");
         }
@@ -69,7 +71,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     private void gameLoop() {
-        EntityHandler.getInstance().addEntity(new Player(100, 100, 200, 200));
         long time1 = System.nanoTime();
         double nsPerTick = 1000000000 / TPS;
         double delta = 0.0;
