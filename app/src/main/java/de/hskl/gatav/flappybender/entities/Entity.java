@@ -15,6 +15,7 @@ public abstract class Entity {
     // Graphics
     protected Asset asset;
 
+
     public Entity(int x, int y, int width, int height, Asset asset) {
         this.x = x;
         this.y = y;
@@ -38,6 +39,38 @@ public abstract class Entity {
         } else {
             asset.render(canvas, x, y, width, height);
         }
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
 }

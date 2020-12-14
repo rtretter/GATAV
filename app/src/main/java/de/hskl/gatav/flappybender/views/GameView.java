@@ -4,16 +4,20 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import de.hskl.gatav.flappybender.entities.Entity;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
+import de.hskl.gatav.flappybender.entities.Obstacle;
 import de.hskl.gatav.flappybender.entities.Player;
+import de.hskl.gatav.flappybender.logic.LevelGenerator;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -36,8 +40,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         backgroundPaint.setColor(Color.BLACK);
 
         getHolder().addCallback(this);
-
-        EntityHandler.getInstance().addEntity(new Player(100, 100, 350));
+        EntityHandler.getInstance().addEntity(new Player(100, 100, 275));
     }
 
     @Override
@@ -70,6 +73,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void gameLoop() {
         long time1 = System.nanoTime();
         double nsPerTick = 1000000000 / TPS;
@@ -94,8 +98,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void tick(Canvas canvas) {
+
         EntityHandler.getInstance().tick(canvas);
+        LevelGenerator.getInstance().tick(canvas);
     }
 
     private void render(Canvas canvas) {

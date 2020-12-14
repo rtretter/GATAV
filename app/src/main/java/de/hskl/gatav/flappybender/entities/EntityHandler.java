@@ -1,10 +1,14 @@
 package de.hskl.gatav.flappybender.entities;
 
 import android.graphics.Canvas;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EntityHandler {
 
@@ -45,6 +49,11 @@ public class EntityHandler {
             INSTANCE = new EntityHandler();
         }
         return INSTANCE;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<Entity> getObstacles() {
+        return entities.stream().filter((e) -> e instanceof Obstacle).collect(Collectors.toList());
     }
 
 }

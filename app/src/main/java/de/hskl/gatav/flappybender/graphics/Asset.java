@@ -11,6 +11,8 @@ import de.hskl.gatav.flappybender.R;
 public class Asset {
 
     public static final String ASSET_BENDER_PROF = "BENDER_PROF";
+    public static final String ASSET_OBSTACLE_TOP = "OBSTACLE_TOP";
+    public static final String ASSET_OBSTACLE_BOTTOM = "OBSTACLE_BOTTOM";
 
     private final int resourceId;
     private Bitmap bitmap;

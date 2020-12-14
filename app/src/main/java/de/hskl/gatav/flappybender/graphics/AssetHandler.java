@@ -22,6 +22,8 @@ public class AssetHandler {
 
     private final void initAssets() {
         assets.put(Asset.ASSET_BENDER_PROF, Asset.loadFromId(R.drawable.bender_prof));
+        assets.put(Asset.ASSET_OBSTACLE_TOP,Asset.loadFromId(R.drawable.obstacle_top));
+        assets.put(Asset.ASSET_OBSTACLE_BOTTOM,Asset.loadFromId(R.drawable.obstacle_bottom));
     }
 
     public Activity getActivity() {
