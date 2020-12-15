@@ -21,7 +21,7 @@ public class Background extends Entity {
         } else {
             asset = AssetHandler.getAsset(Asset.ASSET_BACKGROUND_R2D2);
         }
-        this.velX = -Obstacle.OBSTACLE_SPEED;
+        this.velX = -Obstacle.OBSTACLE_SPEED * 0.75;
         this.zPos = -1;
     }
 
@@ -30,7 +30,7 @@ public class Background extends Entity {
         super.tick(canvas);
         if(!createdNext && x + width < canvas.getWidth()) {
             createdNext = true;
-            EntityHandler.getInstance().addEntity(new Background((int) Math.ceil(x + width), height));
+            EntityHandler.getInstance().addEntity(new Background((int) Math.ceil(x + width + velX), height));
         }
         if(x + width < 0) {
             EntityHandler.getInstance().removeEntity(this);
