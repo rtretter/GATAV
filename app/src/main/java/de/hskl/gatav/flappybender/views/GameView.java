@@ -101,10 +101,16 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void tick(Canvas canvas) {
+        if(canvas == null) {
+            return;
+        }
         Game.getInstance().tick(canvas);
     }
 
     private void render(Canvas canvas) {
+        if(canvas == null) {
+            return;
+        }
         canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), backgroundPaint);
         Game.getInstance().render(canvas);
     }

@@ -29,11 +29,17 @@ public class Game {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void tick(Canvas canvas) {
+        if(canvas == null) {
+            return;
+        }
         EntityHandler.getInstance().tick(canvas);
         LevelGenerator.getInstance().tick(canvas);
     }
 
     public void render(Canvas canvas) {
+        if(canvas == null) {
+            return;
+        }
         EntityHandler.getInstance().render(canvas);
         canvas.drawText(score + "", canvas.getWidth() / 2, (int) (FONT_SIZE * 1.25), scorePaint);
     }
