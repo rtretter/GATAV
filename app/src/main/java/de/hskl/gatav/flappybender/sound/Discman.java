@@ -18,7 +18,7 @@ public class Discman extends Service {
 
     public Discman() {
         INSTANCE = this;
-        currentSong = R.raw.background;
+        currentSong = R.raw.preloader;
     }
 
     @Nullable
@@ -31,7 +31,7 @@ public class Discman extends Service {
     public void onCreate() {
         super.onCreate();
         mediaPlayer = MediaPlayer.create(this, currentSong);
-        mediaPlayer.setLooping(true); // Set looping
+        mediaPlayer.setLooping(false); // Set looping
         mediaPlayer.setVolume(100, 100);
         mediaPlayer.start();
 

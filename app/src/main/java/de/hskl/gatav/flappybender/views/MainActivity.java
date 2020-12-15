@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         // Set Activity
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(MainActivity.this, Discman.class);
-        startService(intent);
+        Discman.getInstance().setSong(R.raw.background);
     }
 
     @Override
