@@ -18,6 +18,7 @@ import de.hskl.gatav.flappybender.entities.Entity;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
 import de.hskl.gatav.flappybender.entities.Obstacle;
 import de.hskl.gatav.flappybender.entities.Player;
+import de.hskl.gatav.flappybender.logic.Game;
 import de.hskl.gatav.flappybender.logic.LevelGenerator;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
@@ -41,12 +42,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         backgroundPaint.setColor(Color.GRAY);
 
         getHolder().addCallback(this);
-        EntityHandler.getInstance().addEntity(new Player(100, 100, 275));
     }
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
-        if(isRunning) {
+        if (isRunning) {
             throw new RuntimeException("Game already running?!?");
         }
         this.surfaceHolder = surfaceHolder;
@@ -62,7 +62,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
-        if(!isRunning) {
+        if (!isRunning) {
             throw new RuntimeException("Game stopped but isn't running?!?");
         }
         isRunning = false;
@@ -80,12 +80,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         double nsPerTick = 1000000000 / TPS;
         double delta = 0.0;
 
-        while(isRunning) {
+        while (isRunning) {
             long time2 = System.nanoTime();
             delta += (time2 - time1) / nsPerTick;
             time1 = time2;
 
-            if(delta >= 1) {
+            if (delta >= 1) {
                 delta--;
                 Canvas canvas = surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
@@ -101,14 +101,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void tick(Canvas canvas) {
-
-        EntityHandler.getInstance().tick(canvas);
-        LevelGenerator.getInstance().tick(canvas);
+        Game.getInstance().tick(canvas);
     }
 
     private void render(Canvas canvas) {
         canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), backgroundPaint);
-        EntityHandler.getInstance().render(canvas);
+        Game.getInstance().render(canvas);
     }
 
     private void sleep(long millis) {

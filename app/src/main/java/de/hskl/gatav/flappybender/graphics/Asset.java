@@ -34,11 +34,11 @@ public class Asset {
         return new Asset(BitmapFactory.decodeResource(AssetHandler.getInstance().getActivity().getResources(), id), id);
     }
 
-    public int getWidth(){
+    public int getWidth() {
         return bitmap.getWidth();
     }
 
-    public int getHeight(){
+    public int getHeight() {
         return bitmap.getHeight();
     }
 

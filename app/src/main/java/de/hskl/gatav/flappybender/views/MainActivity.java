@@ -30,6 +30,22 @@ public class MainActivity extends AppCompatActivity {
         startService(intent);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (Discman.wasCreated()) {
+            Discman.getInstance().onPause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (Discman.wasCreated()) {
+            Discman.getInstance().onResume();
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void clicked(View view) {
         EntityHandler.getInstance().getPlayer().jump();

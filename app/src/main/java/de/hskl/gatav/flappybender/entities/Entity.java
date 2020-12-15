@@ -28,7 +28,7 @@ public abstract class Entity {
     }
 
     public Entity(int x, int y, int width, Asset asset) {
-        this(x, y, width, (int)((float) width / asset.getWidth() * asset.getHeight()), asset);
+        this(x, y, width, (int) ((float) width / asset.getWidth() * asset.getHeight()), asset);
     }
 
     public void tick(Canvas canvas) {
@@ -37,15 +37,15 @@ public abstract class Entity {
     }
 
     public void render(Canvas canvas) {
-        if(height == 0) {
+        if (height == 0) {
             asset.render(canvas, x, y, width);
         } else {
             asset.render(canvas, x, y, width, height);
         }
     }
 
-    public Rect getBounds(){
-        return new Rect((int)x,(int)y,(int)x+width,(int)y+height);
+    public Rect getBounds() {
+        return new Rect((int) x, (int) y, (int) x + width, (int) y + height);
     }
 
     public double getX() {
