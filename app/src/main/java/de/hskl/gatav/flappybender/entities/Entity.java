@@ -1,6 +1,9 @@
 package de.hskl.gatav.flappybender.entities;
 
 import android.graphics.Canvas;
+import android.graphics.Rect;
+
+import androidx.constraintlayout.solver.widgets.Rectangle;
 
 import de.hskl.gatav.flappybender.graphics.Asset;
 
@@ -25,7 +28,7 @@ public abstract class Entity {
     }
 
     public Entity(int x, int y, int width, Asset asset) {
-        this(x, y, width, 0, asset);
+        this(x, y, width, (int)((float) width / asset.getWidth() * asset.getHeight()), asset);
     }
 
     public void tick(Canvas canvas) {
@@ -39,6 +42,10 @@ public abstract class Entity {
         } else {
             asset.render(canvas, x, y, width, height);
         }
+    }
+
+    public Rect getBounds(){
+        return new Rect((int)x,(int)y,(int)x+width,(int)y+height);
     }
 
     public double getX() {

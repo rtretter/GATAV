@@ -32,6 +32,11 @@ public class EntityHandler {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Player getPlayer(){
+        return (Player) entities.stream().filter((e) -> e instanceof Player).findFirst().get();
+    }
+
     public void addEntity(Entity e) {
         entities.add(e);
     }

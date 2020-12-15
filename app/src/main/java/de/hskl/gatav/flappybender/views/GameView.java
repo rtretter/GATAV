@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -37,7 +38,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         super(context, attrs);
 
         backgroundPaint = new Paint();
-        backgroundPaint.setColor(Color.BLACK);
+        backgroundPaint.setColor(Color.GRAY);
 
         getHolder().addCallback(this);
         EntityHandler.getInstance().addEntity(new Player(100, 100, 275));
@@ -117,5 +118,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             Log.e(TAG, "Error Sleeping: " + e.getMessage());
         }
     }
+
 
 }

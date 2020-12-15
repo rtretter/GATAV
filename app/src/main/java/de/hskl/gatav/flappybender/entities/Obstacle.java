@@ -11,6 +11,6 @@ public class Obstacle extends Entity{
 
     public Obstacle(int x, int y, int height, int obstacleType) {
         super(x, y, OBSTACLE_WIDTH, height, (obstacleType==OBSTACLE_TOP)?AssetHandler.getAsset(Asset.ASSET_OBSTACLE_TOP):AssetHandler.getAsset(Asset.ASSET_OBSTACLE_BOTTOM));
-        velX=-5;
+        velX=-10;
     }
 }
