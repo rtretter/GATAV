@@ -2,6 +2,7 @@ package de.hskl.gatav.flappybender.logic;
 
 import android.graphics.Canvas;
 import android.os.Build;
+import android.os.Handler;
 
 import androidx.annotation.RequiresApi;
 
@@ -19,7 +20,6 @@ public class LevelGenerator {
     private static final int GAP = 550;
     private static final int MINIMUM_HEIGHT = 100;
     private int tickCounter;
-
 
     private LevelGenerator() {
     }

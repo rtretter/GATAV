@@ -14,13 +14,7 @@ public class Background extends Entity {
     }
 
     public Background(int xOff, int width, int height) {
-        super(xOff, 0, width, height, null);
-        double rand = Math.random();
-        if(rand < 0.5) {
-            asset = AssetHandler.getAsset(Asset.ASSET_BACKGROUND_AGEB);
-        } else {
-            asset = AssetHandler.getAsset(Asset.ASSET_BACKGROUND_R2D2);
-        }
+        super(xOff, 0, width, height, AssetHandler.getRandomBackgroundAsset());
         this.velX = -Obstacle.OBSTACLE_SPEED * 0.75;
         this.zPos = -1;
     }

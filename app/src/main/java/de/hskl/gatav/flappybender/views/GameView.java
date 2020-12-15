@@ -5,15 +5,18 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.entities.Entity;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
 import de.hskl.gatav.flappybender.entities.Obstacle;
@@ -73,6 +76,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             Log.e(TAG, "Error Destroying surface: " + e.getMessage());
         }
     }
+    int i = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void gameLoop() {
@@ -92,10 +96,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                     tick(canvas);
                     render(canvas);
                 }
-                surfaceHolder.unlockCanvasAndPost(canvas);
+                try {
+                    surfaceHolder.unlockCanvasAndPost(canvas);
+                } catch(IllegalArgumentException e) {
+                    Log.e(TAG, "Error unlocking Canvas: " + e.getMessage());
+                }
             }
-
-            sleep(1);
         }
     }
 
@@ -107,7 +113,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         Game.getInstance().tick(canvas);
     }
 
-    private void render(Canvas canvas) {
+    protected void render(Canvas canvas) {
         if(canvas == null) {
             return;
         }

@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class EntityHandler {
@@ -45,7 +46,12 @@ public class EntityHandler {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Player getPlayer(){
-        return (Player) entities.stream().filter((e) -> e instanceof Player).findFirst().get();
+        Optional<Entity> playerOptional= entities.stream().filter((e) -> e instanceof Player).findFirst();
+        if(playerOptional.isPresent()) {
+            return (Player) playerOptional.get();
+        } else {
+            return null;
+        }
     }
 
     public void addEntity(Entity e) {

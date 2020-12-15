@@ -36,6 +36,16 @@ public class AssetHandler {
         return getInstance().assets.get(key);
     }
 
+
+    public static Asset getRandomBackgroundAsset() {
+        double rand = Math.random();
+        if(rand < 0.5) {
+            return getAsset(Asset.ASSET_BACKGROUND_AGEB);
+        } else {
+            return getAsset(Asset.ASSET_BACKGROUND_R2D2);
+        }
+    }
+
     public static AssetHandler getInstance() {
         if (INSTANCE == null) {
             throw new RuntimeException("createInstance wasn't called!");
