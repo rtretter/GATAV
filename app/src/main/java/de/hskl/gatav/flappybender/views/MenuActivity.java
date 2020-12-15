@@ -24,7 +24,9 @@ public class MenuActivity extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         getSupportActionBar().hide();
-        Discman.getInstance().setSong(R.raw.main_menu);
+        if(Discman.wasCreated()) {
+            Discman.getInstance().setSong(R.raw.main_menu);
+        }
 
         start = findViewById(R.id.BUTTON_PLAY);;
         highscore = findViewById(R.id.BUTTON_HIGHSCORE);

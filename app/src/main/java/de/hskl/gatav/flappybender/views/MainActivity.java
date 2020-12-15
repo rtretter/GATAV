@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
+import de.hskl.gatav.flappybender.entities.Player;
 import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.sound.Discman;
 
@@ -47,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void clicked(View view) {
-        EntityHandler.getInstance().getPlayer().jump();
+        Player p = EntityHandler.getInstance().getPlayer();
+        if(p == null) {
+            return;
+        }
+        p.jump();
     }
 }

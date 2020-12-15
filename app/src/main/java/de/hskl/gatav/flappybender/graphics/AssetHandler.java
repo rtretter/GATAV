@@ -24,6 +24,8 @@ public class AssetHandler {
         assets.put(Asset.ASSET_BENDER_PROF, Asset.loadFromId(R.drawable.bender_prof));
         assets.put(Asset.ASSET_OBSTACLE_TOP, Asset.loadFromId(R.drawable.obstacle_top));
         assets.put(Asset.ASSET_OBSTACLE_BOTTOM, Asset.loadFromId(R.drawable.obstacle_bottom));
+        assets.put(Asset.ASSET_BACKGROUND_AGEB, Asset.loadFromId(R.drawable.background_level_ageb));
+        assets.put(Asset.ASSET_BACKGROUND_R2D2, Asset.loadFromId(R.drawable.background_level_r2d2));
     }
 
     public Activity getActivity() {

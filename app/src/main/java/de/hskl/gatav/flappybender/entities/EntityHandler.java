@@ -5,7 +5,6 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,13 +13,25 @@ public class EntityHandler {
 
     private static EntityHandler INSTANCE;
 
-    private final List<Entity> entities;
+    private final List<Entity> entities, entitiesToAdd, entitiesToRemove;
 
     private EntityHandler() {
+        entitiesToAdd = new ArrayList<>();
+        entitiesToRemove = new ArrayList<>();
         entities = new ArrayList<>();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void tick(Canvas canvas) {
+        if(!entitiesToAdd.isEmpty()) {
+            entities.addAll(entitiesToAdd);
+            entities.sort((e1, e2) -> Integer.compare(e1.zPos, e2.zPos));
+            entitiesToAdd.clear();
+        }
+        if(!entitiesToRemove.isEmpty()) {
+            entities.removeAll(entitiesToRemove);
+            entitiesToRemove.clear();
+        }
         for(int i = 0; i < entities.size(); i++) {
             entities.get(i).tick(canvas);
         }
@@ -38,11 +49,11 @@ public class EntityHandler {
     }
 
     public void addEntity(Entity e) {
-        entities.add(e);
+        entitiesToAdd.add(e);
     }
 
     public void removeEntity(Entity e) {
-        entities.remove(e);
+        entitiesToRemove.add(e);
     }
 
     public void clear() {

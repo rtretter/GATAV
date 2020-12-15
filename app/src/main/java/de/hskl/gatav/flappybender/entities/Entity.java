@@ -17,6 +17,8 @@ public abstract class Entity {
     protected int width, height;
     // Graphics
     protected Asset asset;
+    // zDepth of Entity
+    protected int zPos;
 
 
     public Entity(int x, int y, int width, int height, Asset asset) {
@@ -25,10 +27,7 @@ public abstract class Entity {
         this.width = width;
         this.height = height;
         this.asset = asset;
-    }
-
-    public Entity(int x, int y, int width, Asset asset) {
-        this(x, y, width, (int) ((float) width / asset.getWidth() * asset.getHeight()), asset);
+        this.zPos = 0;
     }
 
     public void tick(Canvas canvas) {

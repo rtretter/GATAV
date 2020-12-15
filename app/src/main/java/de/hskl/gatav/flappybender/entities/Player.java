@@ -29,7 +29,7 @@ public class Player extends Entity {
     private double mass = DEFAULT_MASS;
 
     public Player(int x, int y, int width) {
-        super(x, y, width, AssetHandler.getAsset(Asset.ASSET_BENDER_PROF));
+        this(x, y, width, (int) ((float) width / AssetHandler.getAsset(Asset.ASSET_BENDER_PROF).getWidth() * AssetHandler.getAsset(Asset.ASSET_BENDER_PROF).getHeight()));
     }
 
     public Player(int x, int y, int width, int height) {
