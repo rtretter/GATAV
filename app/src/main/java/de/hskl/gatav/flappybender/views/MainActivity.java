@@ -5,6 +5,7 @@ import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -15,6 +16,7 @@ import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
 import de.hskl.gatav.flappybender.entities.Player;
 import de.hskl.gatav.flappybender.graphics.AssetHandler;
+import de.hskl.gatav.flappybender.logic.Game;
 import de.hskl.gatav.flappybender.sound.Discman;
 import de.hskl.gatav.flappybender.sound.Music;
 
@@ -27,6 +29,7 @@ public class MainActivity extends OwnActivity {
         AssetHandler.createInstance(this);
         // Set Activity
         setContentView(R.layout.activity_main);
+        Game.getInstance().setContext(this);
     }
 
     @Override

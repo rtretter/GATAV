@@ -25,7 +25,6 @@ public class PreActivity extends OwnActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_pre);
 
         start = findViewById(R.id.START_APP);

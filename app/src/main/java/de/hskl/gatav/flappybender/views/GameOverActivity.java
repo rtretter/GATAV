@@ -1,7 +1,6 @@
 package de.hskl.gatav.flappybender.views;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import de.hskl.gatav.flappybender.R;
-import de.hskl.gatav.flappybender.sound.Discman;
+import de.hskl.gatav.flappybender.logic.Game;
 
 public class GameOverActivity extends OwnActivity {
 
@@ -27,19 +26,35 @@ public class GameOverActivity extends OwnActivity {
         TextView currentScore = findViewById(R.id.HIGHSCORE);
         TextView myHighscore = findViewById(R.id.PHIGHS);
 
+
+        currentScore.setText(String.valueOf(Game.getInstance().getLastScore()));
+        myHighscore.setText(String.valueOf(Game.getInstance().getHighscore()));
+
         again.setOnClickListener(this::startGame);
         main.setOnClickListener(this::back);
 
-        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(findViewById(R.id.LOGO_PRE_MENU), PropertyValuesHolder.ofFloat("scaleX", 0.95f), PropertyValuesHolder.ofFloat("scaleY", 0.95f), PropertyValuesHolder.ofFloat("rotation", -2));
-        animator.setDuration(500);
-        animator.setRepeatCount(ObjectAnimator.INFINITE);
-        animator.setRepeatMode(ObjectAnimator.REVERSE);
-        animator.start();
+        TextView congratulations = findViewById(R.id.TEXT_CONGRATULATIONS);
+
+        if(Game.getInstance().wasNewHighscore()) {
+            congratulations.setVisibility(TextView.VISIBLE);
+            ObjectAnimator animatorCongratz = ObjectAnimator.ofPropertyValuesHolder(congratulations, PropertyValuesHolder.ofFloat("scaleX", 0.95f), PropertyValuesHolder.ofFloat("scaleY", 0.95f), PropertyValuesHolder.ofFloat("rotation", 5));
+            animatorCongratz.setDuration(300);
+            animatorCongratz.setRepeatCount(ObjectAnimator.INFINITE);
+            animatorCongratz.setRepeatMode(ObjectAnimator.REVERSE);
+            animatorCongratz.start();
+        } else {
+            congratulations.setVisibility(TextView.GONE);
+            ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(findViewById(R.id.LOGO_PRE_MENU), PropertyValuesHolder.ofFloat("scaleX", 0.95f), PropertyValuesHolder.ofFloat("scaleY", 0.95f), PropertyValuesHolder.ofFloat("rotation", -2));
+            animator.setDuration(500);
+            animator.setRepeatCount(ObjectAnimator.INFINITE);
+            animator.setRepeatMode(ObjectAnimator.REVERSE);
+            animator.start();
+        }
     }
 
     @Override
     protected String getMusic() {
-        return Discman.MUSIC_MENU;
+        return null;
     }
 
     private void startGame(View v){

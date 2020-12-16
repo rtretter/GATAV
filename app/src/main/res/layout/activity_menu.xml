@@ -32,19 +32,6 @@
         app:layout_constraintTop_toBottomOf="@+id/LOGO_PRE_MENU" />
 
     <Button
-        android:id="@+id/BUTTON_HIGHSCORE"
-        android:layout_width="109dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/button_blue_gradient"
-        android:fontFamily="casual"
-        android:text="Highscore"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BUTTON_PLAY" />
-
-    <Button
         android:id="@+id/BUTTON_OPTIONS"
         android:layout_width="109dp"
         android:layout_height="47dp"
@@ -81,7 +68,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BUTTON_HIGHSCORE" />
+        app:layout_constraintTop_toBottomOf="@+id/BUTTON_PLAY" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,7 @@ public class SkinActivity extends OwnActivity {
 
     @Override
     protected String getMusic() {
-        return Discman.MUSIC_MENU;
+        return null;
     }
 
     private void back(View v){

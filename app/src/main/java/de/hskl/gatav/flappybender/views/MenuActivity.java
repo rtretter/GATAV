@@ -20,8 +20,7 @@ public class MenuActivity extends OwnActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button start = findViewById(R.id.BUTTON_PLAY);;
-        Button highscore = findViewById(R.id.BUTTON_HIGHSCORE);
+        Button start = findViewById(R.id.BUTTON_PLAY);
         Button skins = findViewById(R.id.BUTTON_SKINS);
         Button options = findViewById(R.id.BUTTON_OPTIONS);
         Button exit = findViewById(R.id.BUTTON_EXIT);
@@ -29,7 +28,6 @@ public class MenuActivity extends OwnActivity {
         start.setOnClickListener(this::startGame);
         options.setOnClickListener(this::options);
         exit.setOnClickListener(this::exit);
-        highscore.setOnClickListener(this::showHighscore);
         skins.setOnClickListener(this::chooseSkins);
 
         ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(findViewById(R.id.LOGO_PRE_MENU), PropertyValuesHolder.ofFloat("scaleX", 0.95f), PropertyValuesHolder.ofFloat("scaleY", 0.95f), PropertyValuesHolder.ofFloat("rotation", -2));
@@ -52,11 +50,6 @@ public class MenuActivity extends OwnActivity {
 
     private void chooseSkins(View v){
         Intent intent = new Intent(MenuActivity.this, SkinActivity.class);
-        startActivity(intent);
-    }
-
-    private void showHighscore(View v){
-        Intent intent = new Intent(MenuActivity.this, HighscoreActivity.class);
         startActivity(intent);
     }
 

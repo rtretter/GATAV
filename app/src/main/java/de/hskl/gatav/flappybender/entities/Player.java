@@ -68,7 +68,7 @@ public class Player extends Entity {
         }
 
         if (y > canvas.getHeight() - height) {
-            Game.getInstance().restart();
+            Game.getInstance().gameOver();
         }
 
         List<Entity> obstacles = EntityHandler.getInstance().getObstacles();
@@ -81,7 +81,7 @@ public class Player extends Entity {
                 }
             }
             if (playerRect.intersect(obstacles.get(i).getBounds())) {
-                Game.getInstance().restart();
+                Game.getInstance().gameOver();
             }
         }
     }
