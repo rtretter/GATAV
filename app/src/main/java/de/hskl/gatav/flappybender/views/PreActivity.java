@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import de.hskl.gatav.flappybender.R;
+import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.sound.Discman;
 
 public class PreActivity extends OwnActivity {
@@ -34,6 +35,9 @@ public class PreActivity extends OwnActivity {
         animator.setRepeatCount(ObjectAnimator.INFINITE);
         animator.setRepeatMode(ObjectAnimator.REVERSE);
         animator.start();
+
+        // Init Assets
+        AssetHandler.createInstance(this);
 
         start.setOnClickListener(this::startApp);
     }

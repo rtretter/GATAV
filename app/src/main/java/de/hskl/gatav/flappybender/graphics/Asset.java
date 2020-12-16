@@ -44,6 +44,10 @@ public class Asset {
         return new Asset(Bitmap.createScaledBitmap(this.bitmap, width, height, true), resourceId);
     }
 
+    public int getResourceId() {
+        return resourceId;
+    }
+
     public Asset getRotated(int degrees) {
         Matrix matrix = new Matrix();
         matrix.postRotate(degrees);

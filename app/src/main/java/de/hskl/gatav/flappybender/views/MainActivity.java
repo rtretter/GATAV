@@ -25,8 +25,6 @@ public class MainActivity extends OwnActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Init Assets
-        AssetHandler.createInstance(this);
         // Set Activity
         setContentView(R.layout.activity_main);
         Game.getInstance().setContext(this);

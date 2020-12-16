@@ -50,7 +50,7 @@ public class SkinActivity extends OwnActivity {
         animatorUltimateBender.setRepeatMode(ObjectAnimator.REVERSE);
         animatorUltimateBender.start();
 
-        TextView currentNameSkin = findViewById(R.id.ACT_CS);
+        setCurrentName();
 
         ultimateBender.setOnClickListener((v) -> chooseSkin(v, AssetHandler.getAsset(Asset.ASSET_BENDER_PROF)));
         basicBender.setOnClickListener((v) -> chooseSkin(v, AssetHandler.getAsset(Asset.ASSET_BENDER_STANDARD)));
@@ -68,8 +68,23 @@ public class SkinActivity extends OwnActivity {
 
     }
 
+    private void setCurrentName() {
+        TextView currentNameSkin = findViewById(R.id.ACT_CS);
+        switch (Game.getInstance().getPlayerSkin().getResourceId()) {
+            case R.drawable.bender_prof:
+                currentNameSkin.setText("Ultimate Bender");
+                break;
+            case R.drawable.bender_roboter:
+                currentNameSkin.setText("Basic Bender");
+                break;
+            default:
+                break;
+        }
+    }
+
     private  void chooseSkin(View v, Asset skin){
         Game.getInstance().setPlayerSkin(skin);
+        setCurrentName();
     }
 
     private void exit(View view) {
