@@ -31,7 +31,7 @@ public class MainActivity extends OwnActivity {
 
     @Override
     protected String getMusic() {
-        return null;
+        return Discman.MUSIC_GAME;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
