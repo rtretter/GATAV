@@ -22,21 +22,26 @@ public class Player extends Entity {
     private static final double DEFAULT_FORCE = 8;
     private static final double DEFAULT_MASS = 1;
 
+    public static final int PLAYER_HEIGHT = 275;
+
+    private boolean shouldDrop;
+
     private double t = 0.0;
     private double dt = 0.1f;
 
     private double force = DEFAULT_FORCE;
     private double mass = DEFAULT_MASS;
 
-    public Player(int x, int y, int width) {
-        this(x, y, width, (int) ((float) width / AssetHandler.getAsset(Asset.ASSET_BENDER_PROF).getWidth() * AssetHandler.getAsset(Asset.ASSET_BENDER_PROF).getHeight()));
+    public Player(int x, int y) {
+        this(x, y, (int) ((float) PLAYER_HEIGHT / Game.getInstance().getPlayerSkin().getHeight() * Game.getInstance().getPlayerSkin().getWidth()), PLAYER_HEIGHT);
     }
 
-    public Player(int x, int y, int width, int height) {
-        super(x, y, width, height, AssetHandler.getAsset(Asset.ASSET_BENDER_PROF));
+    private Player(int x, int y, int width, int height) {
+        super(x, y, width, height, Game.getInstance().getPlayerSkin());
     }
 
     public void jump() {
+        shouldDrop = true;
         velY += JUMP_SPEED;
         if (velY > JUMP_SPEED) {
             velY = JUMP_SPEED;
@@ -60,6 +65,9 @@ public class Player extends Entity {
     @Override
     public void tick(Canvas canvas) {
         super.tick(canvas);
+        if(!shouldDrop) {
+            return;
+        }
         move();
 
         if(y < 0) {

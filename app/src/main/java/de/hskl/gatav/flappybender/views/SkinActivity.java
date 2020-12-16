@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.hskl.gatav.flappybender.R;
+import de.hskl.gatav.flappybender.graphics.Asset;
+import de.hskl.gatav.flappybender.graphics.AssetHandler;
+import de.hskl.gatav.flappybender.logic.Game;
 import de.hskl.gatav.flappybender.sound.Discman;
 
 public class SkinActivity extends OwnActivity {
@@ -48,8 +52,8 @@ public class SkinActivity extends OwnActivity {
 
         TextView currentNameSkin = findViewById(R.id.ACT_CS);
 
-        ultimateBender.setOnClickListener(this::chooseSkin);
-        basicBender.setOnClickListener(this::chooseSkin);
+        ultimateBender.setOnClickListener((v) -> chooseSkin(v, AssetHandler.getAsset(Asset.ASSET_BENDER_PROF)));
+        basicBender.setOnClickListener((v) -> chooseSkin(v, AssetHandler.getAsset(Asset.ASSET_BENDER_STANDARD)));
         back.setOnClickListener(this::back);
     }
 
@@ -64,7 +68,8 @@ public class SkinActivity extends OwnActivity {
 
     }
 
-    private  void chooseSkin(View v){
+    private  void chooseSkin(View v, Asset skin){
+        Game.getInstance().setPlayerSkin(skin);
     }
 
     private void exit(View view) {

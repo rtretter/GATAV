@@ -33,16 +33,22 @@ public class MainActivity extends OwnActivity {
     }
 
     @Override
+    public void onBackPressed() {
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Game.getInstance().restart();
+    }
+
+    @Override
     protected String getMusic() {
         return Discman.MUSIC_GAME;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void clicked(View view) {
-        Player p = EntityHandler.getInstance().getPlayer();
-        if(p == null) {
-            return;
-        }
-        p.jump();
+        Game.getInstance().clickAction();
     }
 }

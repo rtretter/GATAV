@@ -20,16 +20,21 @@ public class LevelGenerator {
     private static final int GAP = 550;
     private static final int MINIMUM_HEIGHT = 100;
     private int tickCounter;
+    private boolean spawning;
 
     private LevelGenerator() {
     }
 
     public void restart() {
         tickCounter = 0;
+        spawning = false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void tick(Canvas canvas) {
+        if(!spawning) {
+            return;
+        }
         tickCounter++;
 
         if (tickCounter >= canvas.getWidth() / Obstacle.OBSTACLE_SPEED * TICK_GENERATE_FACTOR) {
@@ -46,6 +51,10 @@ public class LevelGenerator {
                 EntityHandler.getInstance().removeEntity(obstacles.get(i));
             }
         }
+    }
+
+    public void startSpawning() {
+        spawning = true;
     }
 
     public static LevelGenerator getInstance() {

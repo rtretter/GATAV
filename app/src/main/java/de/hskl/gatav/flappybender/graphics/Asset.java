@@ -9,6 +9,7 @@ import android.graphics.Matrix;
 public class Asset {
 
     public static final String ASSET_BENDER_PROF = "BENDER_PROF";
+    public static final String ASSET_BENDER_STANDARD = "BENDER_STANDARD";
     public static final String ASSET_OBSTACLE_TOP = "OBSTACLE_TOP";
     public static final String ASSET_OBSTACLE_BOTTOM = "OBSTACLE_BOTTOM";
     public static final String ASSET_BACKGROUND_AGEB = "BACKGROUND_AGEB";

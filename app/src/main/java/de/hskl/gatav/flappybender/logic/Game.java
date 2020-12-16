@@ -11,10 +11,14 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import java.util.logging.Level;
+
 import de.hskl.gatav.flappybender.entities.Background;
 import de.hskl.gatav.flappybender.entities.Entity;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
 import de.hskl.gatav.flappybender.entities.Player;
+import de.hskl.gatav.flappybender.graphics.Asset;
+import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.views.GameOverActivity;
 import de.hskl.gatav.flappybender.views.MainActivity;
 
@@ -30,6 +34,8 @@ public class Game {
 
     private boolean wasNewHighscore;
 
+    private Asset playerSkin;
+
     private Paint scorePaint;
     private boolean shouldRestart;
 
@@ -39,6 +45,7 @@ public class Game {
         scorePaint.setTextSize(FONT_SIZE);
         scorePaint.setTextAlign(Paint.Align.CENTER);
         scorePaint.setAntiAlias(true);
+        playerSkin = AssetHandler.getAsset(Asset.ASSET_BENDER_STANDARD);
         restart();
     }
 
@@ -63,6 +70,16 @@ public class Game {
         canvas.drawText(score + "", canvas.getWidth() / 2, (int) (FONT_SIZE * 1.25), scorePaint);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void clickAction() {
+        LevelGenerator.getInstance().startSpawning();
+        Player p = EntityHandler.getInstance().getPlayer();
+        if(p == null) {
+            return;
+        }
+        p.jump();
+    }
+
     public void incrementScore() {
         score++;
     }
@@ -71,11 +88,12 @@ public class Game {
         shouldRestart = true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void restartAction(Canvas canvas) {
         LevelGenerator.getInstance().restart();
         EntityHandler.getInstance().clear();
         EntityHandler.getInstance().addEntity(new Background(0, canvas.getHeight()));
-        EntityHandler.getInstance().addEntity(new Player(100, 100, 175));
+        EntityHandler.getInstance().addEntity(new Player(100, canvas.getHeight() / 2 - Player.PLAYER_HEIGHT / 2));
     }
 
     public void gameOver() {
@@ -102,6 +120,14 @@ public class Game {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public void setPlayerSkin(Asset skin) {
+        this.playerSkin = skin;
+    }
+
+    public Asset getPlayerSkin() {
+        return playerSkin;
     }
 
     public static Game getInstance() {
