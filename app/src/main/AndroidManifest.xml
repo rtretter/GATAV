@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.OptionsActivity"></activity>
+        <activity android:name=".views.SkinActivity"></activity>
+        <activity android:name=".views.HighscoreActivity" />
+        <activity android:name=".views.GameOverActivity" />
+        <activity android:name=".views.OptionsActivity" />
         <activity android:name=".views.MenuActivity" />
         <activity android:name=".views.PreActivity">
             <intent-filter>

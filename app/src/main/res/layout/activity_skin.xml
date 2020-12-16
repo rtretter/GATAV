@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/AWS_SK"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_pre"
+    tools:context=".views.SkinActivity">
+
+    <Button
+        android:id="@+id/BACK_SC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/button_blue_gradient"
+        android:fontFamily="casual"
+        android:text="Back"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/LOGO_PRE_MENU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:rotation="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/SKIN_HEADER"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:fontFamily="casual"
+        android:text="Choose A Skin"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LOGO_PRE_MENU"
+        tools:text="Choose A Skin" />
+
+    <TextView
+        android:id="@+id/NAME_BB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="casual"
+        android:text="Basic Bender"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MSG_CS" />
+
+    <TextView
+        android:id="@+id/NAME_UB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="116dp"
+        android:fontFamily="casual"
+        android:text="Ultimate Bender"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ACT_CS" />
+
+    <ImageView
+        android:id="@+id/IMG_UB"
+        android:layout_width="79dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="168dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NAME_UB"
+        app:srcCompat="@drawable/bender_prof" />
+
+    <ImageView
+        android:id="@+id/IMG_BB"
+        android:layout_width="79dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NAME_BB"
+        app:srcCompat="@drawable/bender_roboter" />
+
+    <TextView
+        android:id="@+id/MSG_CS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="casual"
+        android:text="Current Skin:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SKIN_HEADER" />
+
+    <TextView
+        android:id="@+id/ACT_CS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="casual"
+        android:text="Ultimate Bender"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toEndOf="@+id/MSG_CS"
+        app:layout_constraintTop_toBottomOf="@+id/SKIN_HEADER"
+        tools:text="Ultimate Bender" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

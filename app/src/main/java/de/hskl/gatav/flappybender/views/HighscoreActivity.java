@@ -1,6 +1,7 @@
 package de.hskl.gatav.flappybender.views;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -9,35 +10,29 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.sound.Discman;
 
-public class MenuActivity extends OwnActivity {
+public class HighscoreActivity extends OwnActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_highscore);
 
-        Button start = findViewById(R.id.BUTTON_PLAY);;
-        Button highscore = findViewById(R.id.BUTTON_HIGHSCORE);
-        Button skins = findViewById(R.id.BUTTON_SKINS);
-        Button options = findViewById(R.id.BUTTON_OPTIONS);
-        Button exit = findViewById(R.id.BUTTON_EXIT);
+        Button back = findViewById(R.id.HS_BACK);
+        back.setOnClickListener(this::back);
 
-        start.setOnClickListener(this::startGame);
-        options.setOnClickListener(this::options);
-        exit.setOnClickListener(this::exit);
-        highscore.setOnClickListener(this::showHighscore);
-        skins.setOnClickListener(this::chooseSkins);
+        TextView myHighscore = findViewById(R.id.HS_SC_N);
+        TextView myGlobalPlace = findViewById(R.id.HS_SC_NG);
 
         ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(findViewById(R.id.LOGO_PRE_MENU), PropertyValuesHolder.ofFloat("scaleX", 0.95f), PropertyValuesHolder.ofFloat("scaleY", 0.95f), PropertyValuesHolder.ofFloat("rotation", -2));
         animator.setDuration(500);
         animator.setRepeatCount(ObjectAnimator.INFINITE);
         animator.setRepeatMode(ObjectAnimator.REVERSE);
         animator.start();
-
     }
 
     @Override
@@ -45,25 +40,12 @@ public class MenuActivity extends OwnActivity {
         return Discman.MUSIC_MENU;
     }
 
-    private void startGame(View v){
-        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+    private void back(View v){
+        Intent intent = new Intent(HighscoreActivity.this, MenuActivity.class);
         startActivity(intent);
     }
 
-    private void chooseSkins(View v){
-        Intent intent = new Intent(MenuActivity.this, SkinActivity.class);
-        startActivity(intent);
-    }
 
-    private void showHighscore(View v){
-        Intent intent = new Intent(MenuActivity.this, HighscoreActivity.class);
-        startActivity(intent);
-    }
-
-    private void options(View view) {
-        Intent intent = new Intent(MenuActivity.this, OptionsActivity.class);
-        startActivity(intent);
-    }
 
     private void exit(View view) {
         Intent startMain = new Intent(Intent.ACTION_MAIN);
@@ -77,4 +59,5 @@ public class MenuActivity extends OwnActivity {
     public void onBackPressed() {
         exit(null);
     }
+
 }
