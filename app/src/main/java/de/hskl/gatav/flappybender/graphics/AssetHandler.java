@@ -11,6 +11,7 @@ import de.hskl.gatav.flappybender.R;
 public class AssetHandler {
 
     private static AssetHandler INSTANCE;
+    private static Asset LAST_BACKGROUND;
 
     private final Activity activity;
     private final Map<String, Asset> assets;
@@ -28,6 +29,7 @@ public class AssetHandler {
         assets.put(Asset.ASSET_OBSTACLE_TOP, obstacleBottom.getRotated(180));
         assets.put(Asset.ASSET_BACKGROUND_AGEB, Asset.loadFromId(R.drawable.background_level_ageb));
         assets.put(Asset.ASSET_BACKGROUND_R2D2, Asset.loadFromId(R.drawable.background_level_r2d2));
+        assets.put(Asset.ASSET_BACKGROUND_SKY, Asset.loadFromId(R.drawable.background_sky));
     }
 
     public Activity getActivity() {
@@ -42,10 +44,14 @@ public class AssetHandler {
     public static Asset getRandomBackgroundAsset() {
         double rand = Math.random();
         if(rand < 0.5) {
-            return getAsset(Asset.ASSET_BACKGROUND_AGEB);
+            return LAST_BACKGROUND = getAsset(Asset.ASSET_BACKGROUND_AGEB);
         } else {
-            return getAsset(Asset.ASSET_BACKGROUND_R2D2);
+            return LAST_BACKGROUND = getAsset(Asset.ASSET_BACKGROUND_R2D2);
         }
+    }
+
+    public static Asset getLastBackground() {
+        return LAST_BACKGROUND;
     }
 
     public static AssetHandler getInstance() {

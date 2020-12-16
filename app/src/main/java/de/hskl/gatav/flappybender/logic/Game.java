@@ -16,7 +16,9 @@ import java.util.logging.Level;
 import de.hskl.gatav.flappybender.entities.Background;
 import de.hskl.gatav.flappybender.entities.Entity;
 import de.hskl.gatav.flappybender.entities.EntityHandler;
+import de.hskl.gatav.flappybender.entities.LevelBackground;
 import de.hskl.gatav.flappybender.entities.Player;
+import de.hskl.gatav.flappybender.entities.SkyBackground;
 import de.hskl.gatav.flappybender.graphics.Asset;
 import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.views.GameOverActivity;
@@ -92,7 +94,8 @@ public class Game {
     private void restartAction(Canvas canvas) {
         LevelGenerator.getInstance().restart();
         EntityHandler.getInstance().clear();
-        EntityHandler.getInstance().addEntity(new Background(0, canvas.getHeight()));
+        EntityHandler.getInstance().addEntity(new SkyBackground(0, canvas.getHeight()));
+        EntityHandler.getInstance().addEntity(new LevelBackground(0, canvas.getHeight()));
         EntityHandler.getInstance().addEntity(new Player(100, canvas.getHeight() / 2 - Player.PLAYER_HEIGHT / 2));
     }
 

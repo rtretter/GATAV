@@ -5,18 +5,16 @@ import android.graphics.Canvas;
 import de.hskl.gatav.flappybender.graphics.Asset;
 import de.hskl.gatav.flappybender.graphics.AssetHandler;
 
-public class Background extends Entity {
+public abstract class Background extends Entity {
 
+    private double paralaxFactor;
     private boolean createdNext;
 
-    public Background(int xOff, int height) {
-        this(xOff, (int) ((float) height / AssetHandler.getAsset(Asset.ASSET_BACKGROUND_AGEB).getHeight() * AssetHandler.getAsset(Asset.ASSET_BACKGROUND_AGEB).getWidth()), height);
-    }
-
-    public Background(int xOff, int width, int height) {
-        super(xOff, 0, width, height, AssetHandler.getRandomBackgroundAsset());
-        this.velX = -Obstacle.OBSTACLE_SPEED * 0.75;
-        this.zPos = -1;
+    public Background(int xOff, int width, int height, Asset asset, double paralaxFactor, int zPos) {
+        super(xOff, 0, width, height, asset);
+        this.paralaxFactor = paralaxFactor;
+        this.velX = -Obstacle.OBSTACLE_SPEED * paralaxFactor;
+        this.zPos = zPos;
     }
 
     @Override
@@ -24,10 +22,12 @@ public class Background extends Entity {
         super.tick(canvas);
         if(!createdNext && x + width < canvas.getWidth()) {
             createdNext = true;
-            EntityHandler.getInstance().addEntity(new Background((int) Math.ceil(x + width + velX), height));
+            createNextBackground(canvas);
         }
         if(x + width < 0) {
             EntityHandler.getInstance().removeEntity(this);
         }
     }
+
+    protected abstract void createNextBackground(Canvas canvas);
 }
