@@ -1,14 +1,10 @@
 package de.hskl.gatav.flappybender.graphics;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.Log;
+import android.graphics.Matrix;
 
-import de.hskl.gatav.flappybender.R;
 
 public class Asset {
 
@@ -44,6 +40,13 @@ public class Asset {
 
     public Asset getResized(int width, int height) {
         return new Asset(Bitmap.createScaledBitmap(this.bitmap, width, height, true), resourceId);
+    }
+
+    public Asset getRotated(int degrees) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degrees);
+
+        return new Asset(Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true), resourceId);
     }
 
 }

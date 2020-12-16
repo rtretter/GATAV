@@ -1,11 +1,13 @@
 package de.hskl.gatav.flappybender.views;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,7 +17,7 @@ import android.widget.ImageView;
 import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.sound.Discman;
 
-public class PreActivity extends AppCompatActivity {
+public class PreActivity extends OwnActivity {
 
     ImageView start;
 
@@ -23,14 +25,8 @@ public class PreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        getSupportActionBar().hide();
 
         setContentView(R.layout.activity_pre);
-
-        Intent intent = new Intent(PreActivity.this, Discman.class);
-        startService(intent);
-
 
         start = findViewById(R.id.START_APP);
         ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(start, PropertyValuesHolder.ofFloat("scaleX", 1.2f), PropertyValuesHolder.ofFloat("scaleY", 1.2f), PropertyValuesHolder.ofFloat("alpha", 1f));
@@ -40,6 +36,10 @@ public class PreActivity extends AppCompatActivity {
         animator.setRepeatMode(ObjectAnimator.REVERSE);
         animator.start();
 
+        if(Discman.wasCreated()) {
+            Discman.getInstance().setSong(Discman.MUSIC_PRELOADER);
+        }
+
         start.setOnClickListener(this::startApp);
     }
 
@@ -48,19 +48,12 @@ public class PreActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onPause() {
-        super.onPause();
-        if (Discman.wasCreated()) {
-            Discman.getInstance().onPause();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (Discman.wasCreated()) {
-            Discman.getInstance().onResume();
-        }
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent intent = new Intent(this, Discman.class);
+        stopService(intent);
+        finishAndRemoveTask();
     }
 }
