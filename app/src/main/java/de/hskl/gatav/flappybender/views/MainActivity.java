@@ -14,6 +14,7 @@ import de.hskl.gatav.flappybender.entities.EntityHandler;
 import de.hskl.gatav.flappybender.entities.Player;
 import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.sound.Discman;
+import de.hskl.gatav.flappybender.sound.Music;
 
 public class MainActivity extends OwnActivity {
 
@@ -28,6 +29,11 @@ public class MainActivity extends OwnActivity {
         if(Discman.wasCreated()) {
             Discman.getInstance().setSong(Discman.MUSIC_GAME);
         }
+    }
+
+    @Override
+    protected String getMusic() {
+        return null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

@@ -36,11 +36,12 @@ public class PreActivity extends OwnActivity {
         animator.setRepeatMode(ObjectAnimator.REVERSE);
         animator.start();
 
-        if(Discman.wasCreated()) {
-            Discman.getInstance().setSong(Discman.MUSIC_PRELOADER);
-        }
-
         start.setOnClickListener(this::startApp);
+    }
+
+    @Override
+    protected String getMusic() {
+        return Discman.MUSIC_PRELOADER;
     }
 
     public void startApp(View v){

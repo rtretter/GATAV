@@ -11,6 +11,7 @@
         android:id="@+id/LOGO_PRE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,7 +21,7 @@
         android:id="@+id/BUTTON_PLAY"
         android:layout_width="109dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="166dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/button_blue_gradient"
         android:fontFamily="casual"
         android:text="Play"
@@ -54,6 +55,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BUTTON_SKINS" />
+
+    <Button
+        android:id="@+id/BUTTON_EXIT"
+        android:layout_width="109dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_blue_gradient"
+        android:fontFamily="casual"
+        android:text="EXIT"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BUTTON_OPTIONS" />
 
     <Button
         android:id="@+id/BUTTON_SKINS"

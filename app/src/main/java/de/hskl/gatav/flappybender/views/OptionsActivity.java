@@ -33,6 +33,11 @@ public class OptionsActivity extends OwnActivity {
         volumeSeekbar.setOnSeekBarChangeListener(new SeekBarListener(this::changedVolume));
     }
 
+    @Override
+    protected String getMusic() {
+        return null;
+    }
+
     private void changedVolume() {
         Discman.getInstance().setVolume(volumeSeekbar.getProgress());
     }

@@ -77,11 +77,15 @@ public class Discman extends Service {
     }
 
     public void onPause() {
-        mediaPlayer.pause();
+        if(mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
     }
 
     public void onResume() {
-        mediaPlayer.start();
+        if(!mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+        }
     }
 
     public int getVolume() {
