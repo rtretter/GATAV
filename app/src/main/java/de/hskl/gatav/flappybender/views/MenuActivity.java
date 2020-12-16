@@ -1,22 +1,17 @@
 package de.hskl.gatav.flappybender.views;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
-import android.app.StatusBarManager;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ActionMode;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.sound.Discman;
-import de.hskl.gatav.flappybender.sound.Music;
 
 public class MenuActivity extends OwnActivity {
 
@@ -34,6 +29,12 @@ public class MenuActivity extends OwnActivity {
         start.setOnClickListener(this::startGame);
         options.setOnClickListener(this::options);
         exit.setOnClickListener(this::exit);
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(findViewById(R.id.LOGO_PRE_MENU), PropertyValuesHolder.ofFloat("scaleX", 0.95f), PropertyValuesHolder.ofFloat("scaleY", 0.95f), PropertyValuesHolder.ofFloat("rotation", -2));
+        animator.setDuration(500);
+        animator.setRepeatCount(ObjectAnimator.INFINITE);
+        animator.setRepeatMode(ObjectAnimator.REVERSE);
+        animator.start();
 
     }
 

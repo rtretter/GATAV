@@ -1,5 +1,7 @@
 package de.hskl.gatav.flappybender.views;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,10 +27,6 @@ public class MainActivity extends OwnActivity {
         AssetHandler.createInstance(this);
         // Set Activity
         setContentView(R.layout.activity_main);
-
-        if(Discman.wasCreated()) {
-            Discman.getInstance().setSong(Discman.MUSIC_GAME);
-        }
     }
 
     @Override

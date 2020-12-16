@@ -22,7 +22,12 @@ public abstract class OwnActivity extends AppCompatActivity {
             System.out.println("CREATED MEDIAPLAYER");
         }
 
-        getSupportActionBar().hide();
+        try {
+            getSupportActionBar().hide();
+        } catch (Exception e) {
+            Log.e("ACTIVITY", "Failed removing supportActionBar: " + e.getMessage());
+            e.printStackTrace();
+        }
 
         int currentApiVersion = android.os.Build.VERSION.SDK_INT;
 
