@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.logic.Game;
+import de.hskl.gatav.flappybender.util.Data;
 
 public class GameOverActivity extends OwnActivity {
 
@@ -50,6 +51,7 @@ public class GameOverActivity extends OwnActivity {
             animator.setRepeatMode(ObjectAnimator.REVERSE);
             animator.start();
         }
+        Data.saveData(this);
     }
 
     @Override

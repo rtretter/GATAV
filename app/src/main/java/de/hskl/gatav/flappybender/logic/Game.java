@@ -113,6 +113,10 @@ public class Game {
         return lastScore;
     }
 
+    public void setHighscore(int highscore) {
+        this.highscore = highscore;
+    }
+
     public int getHighscore() {
         return highscore;
     }

@@ -19,6 +19,7 @@ import de.hskl.gatav.flappybender.graphics.Asset;
 import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.logic.Game;
 import de.hskl.gatav.flappybender.sound.Discman;
+import de.hskl.gatav.flappybender.util.Data;
 
 public class SkinActivity extends OwnActivity {
 
@@ -66,6 +67,7 @@ public class SkinActivity extends OwnActivity {
         Intent intent = new Intent(SkinActivity.this, MenuActivity.class);
         startActivity(intent);
 
+        Data.saveData(this);
     }
 
     private void setCurrentName() {

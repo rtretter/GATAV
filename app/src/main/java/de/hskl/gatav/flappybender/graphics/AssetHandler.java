@@ -40,6 +40,14 @@ public class AssetHandler {
         return getInstance().assets.get(key);
     }
 
+    public static Asset getAssetByResourceId(int resourceId) {
+        for(Asset asset: getInstance().assets.values()) {
+            if(asset.getResourceId() == resourceId) {
+                return asset;
+            }
+        }
+        return Asset.loadFromId(resourceId);
+    }
 
     public static Asset getRandomBackgroundAsset() {
         double rand = Math.random();

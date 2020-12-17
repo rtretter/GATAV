@@ -16,6 +16,7 @@ import android.widget.SeekBar;
 import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.listeners.SeekBarListener;
 import de.hskl.gatav.flappybender.sound.Discman;
+import de.hskl.gatav.flappybender.util.Data;
 
 public class OptionsActivity extends OwnActivity {
 
@@ -51,6 +52,7 @@ public class OptionsActivity extends OwnActivity {
     }
 
     private void back(View view) {
+        Data.saveData(this);
         finish();
     }
 }

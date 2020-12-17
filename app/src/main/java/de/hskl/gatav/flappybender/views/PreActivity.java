@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import de.hskl.gatav.flappybender.R;
 import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.sound.Discman;
+import de.hskl.gatav.flappybender.util.Data;
 
 public class PreActivity extends OwnActivity {
 
@@ -36,6 +37,8 @@ public class PreActivity extends OwnActivity {
         animator.setRepeatMode(ObjectAnimator.REVERSE);
         animator.start();
 
+
+
         // Init Assets
         AssetHandler.createInstance(this);
 
@@ -47,7 +50,7 @@ public class PreActivity extends OwnActivity {
         return Discman.MUSIC_PRELOADER;
     }
 
-    public void startApp(View v){
+    public void startApp(View v) {
         Intent intent = new Intent(PreActivity.this, MenuActivity.class);
         startActivity(intent);
     }

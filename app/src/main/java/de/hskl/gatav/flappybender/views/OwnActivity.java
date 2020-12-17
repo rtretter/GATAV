@@ -10,6 +10,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import de.hskl.gatav.flappybender.sound.Discman;
 import de.hskl.gatav.flappybender.sound.Music;
+import de.hskl.gatav.flappybender.util.Data;
 
 public abstract class OwnActivity extends AppCompatActivity {
 
@@ -19,14 +20,12 @@ public abstract class OwnActivity extends AppCompatActivity {
         if(!Discman.wasCreated()) {
             Intent intent = new Intent(this, Discman.class);
             startService(intent);
-            System.out.println("CREATED MEDIAPLAYER");
         }
 
         try {
             getSupportActionBar().hide();
         } catch (Exception e) {
             Log.e("ACTIVITY", "Failed removing supportActionBar: " + e.getMessage());
-            e.printStackTrace();
         }
 
         int currentApiVersion = android.os.Build.VERSION.SDK_INT;
@@ -67,6 +66,9 @@ public abstract class OwnActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(!Data.wasLoaded()) {
+            Data.loadData(this);
+        }
         if (Discman.wasCreated()) {
             if(getMusic() != null) {
                 Discman.getInstance().setSong(getMusic());
