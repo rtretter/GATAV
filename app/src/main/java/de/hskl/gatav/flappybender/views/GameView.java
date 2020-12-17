@@ -60,23 +60,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceChanged(@NonNull SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
     }
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
-        if (!isRunning) {
-            throw new RuntimeException("Game stopped but isn't running?!?");
-        }
-        isRunning = false;
-        try {
-            loopThread.join();
-            loopThread = null;
-        } catch (InterruptedException e) {
-            Log.e(TAG, "Error Destroying surface: " + e.getMessage());
-        }
+        stop();
     }
-    int i = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void gameLoop() {
@@ -102,6 +91,19 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                     Log.e(TAG, "Error unlocking Canvas: " + e.getMessage());
                 }
             }
+        }
+    }
+
+    public void stop() {
+        if (!isRunning) {
+            throw new RuntimeException("Game stopped but isn't running?!?");
+        }
+        isRunning = false;
+        try {
+            loopThread.join();
+            loopThread = null;
+        } catch (InterruptedException e) {
+            Log.e(TAG, "Error Destroying surface: " + e.getMessage());
         }
     }
 

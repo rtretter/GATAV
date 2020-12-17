@@ -28,7 +28,7 @@ public class GameOverActivity extends OwnActivity {
         TextView myHighscore = findViewById(R.id.PHIGHS);
 
 
-        currentScore.setText(String.valueOf(Game.getInstance().getLastScore()));
+        currentScore.setText(String.valueOf(Game.getInstance().getScore()));
         myHighscore.setText(String.valueOf(Game.getInstance().getHighscore()));
 
         again.setOnClickListener(this::startGame);

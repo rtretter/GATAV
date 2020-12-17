@@ -31,6 +31,13 @@ public class MainActivity extends OwnActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        GameView gameview = findViewById(R.id.GAMEVIEW);
+        gameview.stop();
+    }
+
+    @Override
     public void onBackPressed() {
     }
 

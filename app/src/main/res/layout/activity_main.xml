@@ -9,6 +9,7 @@
     tools:context=".views.MainActivity">
 
     <de.hskl.gatav.flappybender.views.GameView
+        android:id="@+id/GAMEVIEW"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:onClick="clicked" />

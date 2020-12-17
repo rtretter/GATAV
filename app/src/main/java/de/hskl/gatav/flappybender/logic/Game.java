@@ -32,7 +32,6 @@ public class Game {
     private Context context;
     private int highscore;
     private int score;
-    private int lastScore;
 
     private boolean wasNewHighscore;
 
@@ -92,6 +91,7 @@ public class Game {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void restartAction(Canvas canvas) {
+        this.score = 0;
         LevelGenerator.getInstance().restart();
         EntityHandler.getInstance().clear();
         EntityHandler.getInstance().addEntity(new SkyBackground(0, canvas.getHeight()));
@@ -102,15 +102,13 @@ public class Game {
     public void gameOver() {
         restart();
         wasNewHighscore = score > highscore;
-        lastScore = score;
         highscore = Math.max(score, highscore);
-        score = 0;
         Intent intent = new Intent(context, GameOverActivity.class);
         context.startActivity(intent);
     }
 
-    public int getLastScore() {
-        return lastScore;
+    public int getScore() {
+        return score;
     }
 
     public void setHighscore(int highscore) {
