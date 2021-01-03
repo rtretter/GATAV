@@ -62,7 +62,6 @@ public class Discman extends Service {
         mediaPlayer = MediaPlayer.create(this, currentSong.getId());
         mediaPlayer.setLooping(music.loop());
         final float volume = currentVolume / MAX_VOLUME;
-        System.out.println(volume);
         mediaPlayer.setVolume(volume, volume);
         mediaPlayer.start();
     }

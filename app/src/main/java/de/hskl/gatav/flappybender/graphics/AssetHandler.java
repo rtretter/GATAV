@@ -30,6 +30,7 @@ public class AssetHandler {
         assets.put(Asset.ASSET_BACKGROUND_AGEB, Asset.loadFromId(R.drawable.background_level_ageb));
         assets.put(Asset.ASSET_BACKGROUND_R2D2, Asset.loadFromId(R.drawable.background_level_r2d2));
         assets.put(Asset.ASSET_BACKGROUND_SKY, Asset.loadFromId(R.drawable.background_sky));
+        assets.put(Asset.ASSET_BACKGROUND_AUDIMAX, Asset.loadFromId(R.drawable.background_level_audimax));
     }
 
     public Activity getActivity() {
@@ -51,11 +52,23 @@ public class AssetHandler {
 
     public static Asset getRandomBackgroundAsset() {
         double rand = Math.random();
-        if(rand < 0.5) {
-            return LAST_BACKGROUND = getAsset(Asset.ASSET_BACKGROUND_AGEB);
-        } else {
-            return LAST_BACKGROUND = getAsset(Asset.ASSET_BACKGROUND_R2D2);
+        Asset newBackground = null;
+        while(newBackground == null) {
+            if (rand < 0.33) {
+                if(getLastBackground() != getAsset(Asset.ASSET_BACKGROUND_AGEB)) {
+                    newBackground = getAsset(Asset.ASSET_BACKGROUND_AGEB);
+                }
+            } else if (rand < 0.66) {
+                if(getLastBackground() != getAsset(Asset.ASSET_BACKGROUND_R2D2)) {
+                    newBackground = getAsset(Asset.ASSET_BACKGROUND_R2D2);
+                }
+            } else {
+                if(getLastBackground() != getAsset(Asset.ASSET_BACKGROUND_AUDIMAX)) {
+                    newBackground = getAsset(Asset.ASSET_BACKGROUND_AUDIMAX);
+                }
+            }
         }
+        return LAST_BACKGROUND = newBackground;
     }
 
     public static Asset getLastBackground() {

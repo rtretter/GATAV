@@ -96,7 +96,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public void stop() {
         if (!isRunning) {
-            throw new RuntimeException("Game stopped but isn't running?!?");
+            return;
         }
         isRunning = false;
         try {

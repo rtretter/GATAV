@@ -14,6 +14,7 @@ public class Asset {
     public static final String ASSET_OBSTACLE_BOTTOM = "OBSTACLE_BOTTOM";
     public static final String ASSET_BACKGROUND_AGEB = "BACKGROUND_AGEB";
     public static final String ASSET_BACKGROUND_R2D2 = "BACKGROUND_R2D2";
+    public static final String ASSET_BACKGROUND_AUDIMAX = "BACKGROUND_AUDIMAX";
     public static final String ASSET_BACKGROUND_SKY = "BACKGROUND_SKY";
 
     private final int resourceId;
