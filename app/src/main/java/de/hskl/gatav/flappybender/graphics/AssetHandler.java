@@ -51,9 +51,9 @@ public class AssetHandler {
     }
 
     public static Asset getRandomBackgroundAsset() {
-        double rand = Math.random();
         Asset newBackground = null;
         while(newBackground == null) {
+            double rand = Math.random();
             if (rand < 0.33) {
                 if(getLastBackground() != getAsset(Asset.ASSET_BACKGROUND_AGEB)) {
                     newBackground = getAsset(Asset.ASSET_BACKGROUND_AGEB);
