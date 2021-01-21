@@ -59,6 +59,10 @@ public class EntityHandler {
     }
 
     public void removeEntity(Entity e) {
+        e.onRemove();
+    }
+
+    protected void removeEntityFromList(Entity e) {
         entitiesToRemove.add(e);
     }
 

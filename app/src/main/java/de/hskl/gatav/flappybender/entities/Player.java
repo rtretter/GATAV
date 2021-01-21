@@ -8,12 +8,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import java.util.List;
-
-import de.hskl.gatav.flappybender.R;
-import de.hskl.gatav.flappybender.graphics.Asset;
-import de.hskl.gatav.flappybender.graphics.AssetHandler;
 import de.hskl.gatav.flappybender.logic.Game;
-import de.hskl.gatav.flappybender.sound.Discman;
 
 public class Player extends Entity {
 
@@ -31,6 +26,8 @@ public class Player extends Entity {
 
     private double force = DEFAULT_FORCE;
     private double mass = DEFAULT_MASS;
+
+    private PlayerDeathAnimation deathAnimation;
 
     public Player(int x, int y) {
         this(x, y, (int) ((float) PLAYER_HEIGHT / Game.getInstance().getPlayerSkin().getHeight() * Game.getInstance().getPlayerSkin().getWidth()), PLAYER_HEIGHT);
@@ -92,6 +89,16 @@ public class Player extends Entity {
                 Game.getInstance().gameOver();
             }
         }
+    }
+
+    public void setDeathAnimationAction(Runnable action) {
+        deathAnimation = new PlayerDeathAnimation((int) this.x, (int) this.y, this.width, this.height, action);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        EntityHandler.getInstance().addEntity(deathAnimation);
     }
 
     @Override

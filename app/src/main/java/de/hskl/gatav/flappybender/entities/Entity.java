@@ -46,6 +46,10 @@ public abstract class Entity {
         return new Rect((int) x, (int) y, (int) x + width, (int) y + height);
     }
 
+    public void onRemove() {
+        EntityHandler.getInstance().removeEntityFromList(this);
+    }
+
     public double getX() {
         return x;
     }
@@ -65,7 +69,9 @@ public abstract class Entity {
     private void setSize(int width, int height) {
         this.width = width;
         this.height = height;
-        this.asset = this.asset.getResized(width, height);
+        if(this.asset != null) {
+            this.asset = this.asset.getResized(width, height);
+        }
     }
 
 }

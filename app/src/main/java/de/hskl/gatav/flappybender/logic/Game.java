@@ -1,6 +1,7 @@
 package de.hskl.gatav.flappybender.logic;
 
 import android.content.Context;
+import android.content.EntityIterator;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -99,7 +100,14 @@ public class Game {
         EntityHandler.getInstance().addEntity(new Player(100, canvas.getHeight() / 2 - Player.PLAYER_HEIGHT / 2));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void gameOver() {
+        Player p = EntityHandler.getInstance().getPlayer();
+        p.setDeathAnimationAction(this::afterDeathAnimation);
+        EntityHandler.getInstance().removeEntity(p);
+    }
+
+    private void afterDeathAnimation() {
         restart();
         wasNewHighscore = score > highscore;
         highscore = Math.max(score, highscore);
